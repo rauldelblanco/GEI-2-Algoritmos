@@ -1,0 +1,167 @@
+Nombres:Brais González Piñeiro(brais.gonzalezp), Armando Martínez Noya(a.mnoya), Raul Fernández del Blanco(r.delblanco).
+
+El ordenador que se usó para la medición de tiempos es un portátil con:
+CPU: Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
+Memoria RAM: 16GB DDR4 
+Disco Duro: 512GB SSD + 1TB (SATA) 7200rpm
+Sistema Operativo: Ubuntu 20.04.3 LTS (64-bit)
+
+En este trabajo buscamos verificar empíricamente la complejidad computacional de dos algoritmos de ordenación diferentes (Ordenación por Shell y Ordenación por selección).
+Para cada uno de los algoritmos utilizamos vectores generados de manera aleatoria, ascendente y descendente. El tamaño de estos sigue una progresión geometrica
+de razón 2, empezando con un n=500 hasta n=32000.
+
+Para calcular la complejidad de cada algoritmo, medimos los tiempos de ejecución de los mismos con los diferentes tamaños de vectores, estos tiempos están medidos en microsegundos (µs).
+
+Para las ejecuciones cuyo tiempo no supere el umbral de confianza de 500 microsegundos (µs), 
+se repetirá el algoritmo k veces y se hallará la media del tiempo de ejecución.
+Los tiempos para los que se ha calculado automáticamente esta media estarán marcados con (*).
+
+
+Ordenación shell con inicializacion aleatoria:
+
+          n           t(n)    t(n)/n^1.10    t(n)/n^1.20    t(n)/n^1.30
+(*)     500         53.984     0.05799599     0.03115308     0.01673417
+(*)    1000        118.668     0.05947488     0.02980804     0.01493942
+(*)    2000        270.396     0.06322185     0.02956406     0.01382488
+       4000        627.000     0.06839140     0.02983976     0.01301936
+       8000       1357.000     0.06905272     0.02811070     0.01144361
+      16000       3162.000     0.07506367     0.02851134     0.01082944
+      32000       7269.000     0.08050254     0.02852952     0.01011067
+
+k=1000.
+Cota Subestimada: n^1.1
+Cota Ajustada: n^1.2
+CotaSobrestimada: n^1.3
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.1 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.3
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.02935950
+
+
+Ordenación shell con inicializacion ascendente
+
+          n           t(n)    t(n)/n^0.95    t(n)/n^1.12    t(n)/n^1.20
+(*)     500         13.889     0.03790090     0.01317724     0.00801506
+(*)    1000         31.752     0.04485090     0.01386025     0.00797574
+(*)    2000         70.866     0.05181547     0.01423260     0.00774822
+(*)    4000        152.945     0.05788664     0.01413280     0.00727886
+(*)    8000        351.600     0.06888322     0.01494817     0.00728351
+      16000        779.000     0.07899935     0.01523783     0.00702414
+      32000       1616.000     0.08482990     0.01454365     0.00634251
+
+k=1000.
+Cota Subestimada: n^0.95
+Cota Ajustada: n^1.12
+CotaSobrestimada: n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^0.95 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.01420707
+
+
+Ordenación shell con inicializacion descendente
+
+          n           t(n)    t(n)/n^1.00    t(n)/n^1.12    t(n)/n^1.20
+(*)     500         21.576     0.04315200     0.02047031     0.01245107
+(*)    1000         52.043     0.05204300     0.02271759     0.01307261
+(*)    2000        113.913     0.05695650     0.02287809     0.01245481
+(*)    4000        249.500     0.06237500     0.02305491     0.01187404
+       8000        586.000     0.07325000     0.02491362     0.01213918
+      16000       1148.000     0.07175000     0.02245575     0.01035137
+      32000       2409.000     0.07528125     0.02168048     0.00945489
+
+k=1000.
+Cota Subestimada: n^1
+Cota Ajustada: n^1.12
+CotaSobrestimada: n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.02259582
+
+
+Ordenación por selección con inicializacion aleatoria
+
+          n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+(*)     500        299.573     0.00415295     0.00119829     0.00034576
+       1000       1169.000     0.00465387     0.00116900     0.00029364
+       2000       4374.000     0.00500063     0.00109350     0.00023912
+       4000      18254.000     0.00599308     0.00114087     0.00021718
+       8000      70225.000     0.00662110     0.00109727     0.00018184
+      16000     273390.000     0.00740230     0.00106793     0.00015407
+      32000    1086027.000     0.00844444     0.00106057     0.00013320
+
+k=1000.
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+CotaSobrestimada: n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00111820
+
+
+Ordenación por selección con inicializacion ascendente
+
+          n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+(*)     500        271.046     0.00375748     0.00108418     0.00031283
+       1000       1091.000     0.00434335     0.00109100     0.00027405
+       2000       4236.000     0.00484286     0.00105900     0.00023157
+       4000      17610.000     0.00578165     0.00110063     0.00020952
+       8000      70067.000     0.00660620     0.00109480     0.00018143
+      16000     275512.000     0.00745976     0.00107622     0.00015527
+      32000    1106802.000     0.00860598     0.00108086     0.00013575
+
+k=1000.
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+CotaSobrestimada: n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00108381
+
+
+Ordenación por selección con inicializacion descendente
+
+          n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+(*)     500        295.322     0.00409402     0.00118129     0.00034085
+       1000       1167.000     0.00464591     0.00116700     0.00029314
+       2000       4534.000     0.00518355     0.00113350     0.00024787
+       4000      18805.000     0.00617398     0.00117531     0.00022374
+       8000      73625.000     0.00694166     0.00115039     0.00019065
+      16000     292178.000     0.00791101     0.00114132     0.00016466
+      32000    1171269.000     0.00910724     0.00114382     0.00014366
+
+k=1000.
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+CotaSobrestimada: n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00115609
+
+
+
+**Notese que hemos elegido las mejores tablas de una secuencia de varias para evitar las anomalias.**
+
+CONCLUSION:
+
+En la ordenación por selección hemos demostrado empiricamente su complejidad teórica gracias a los resultados obtenidos en las tablas.
+En el mejor caso (ascendente) tiene una complejidad cuadrática O(n²), así como el caso medio (aleatorio) y el peor caso (descendente).
+En cuanto al caso de la ordenacion shell hemos comprobado que es más eficiente en general que la ordenación por selección.
+El caso menos eficiente de este algoritmo es el caso del vector aleatorio, mientras que el más eficiente es el del vector ascendente.
+
