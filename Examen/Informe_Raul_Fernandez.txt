@@ -1,0 +1,101 @@
+El ordenador que se usó para la medición de tiempos es un portátil con:
+CPU: Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
+Memoria RAM: 16GB DDR4 
+Disco Duro: 512GB SSD + 1TB (SATA) 7200rpm
+Sistema Operativo: Ubuntu 20.04.3 LTS (64-bit)
+
+Nombre: Raul Fernández del Blanco(r.delblanco).
+En este trabajo buscamos verificar empiricamente la complejidad computacional de tres algoritmos de la suma de la subsecuencia máxina.
+Para cada uno de los algoritmos utilizamos vectores generados aleatoriamente , el tamaño de estos sigue una progresion geometrica
+de razón 2 hasta 32000.
+
+Además también mide los tiempos de ejecución de los distintas algoritmos, estos tiempos están medidos en microsegundos(µs).
+
+Para las ejecuciones cuyo tiempo no supere el umbral de confianza de 500 microsegundos, 
+se repetirá el algoritmo k veces y se hallará la media del tiempo de ejecución.
+Los tiempos para los que se ha calculado automáticamente esta media estarán marcados con (*).
+
+sumaSubMax1
+          n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+(*)     500        268.482     0.00372194     0.00107393     0.00030987
+       1000       1247.000     0.00496440     0.00124700     0.00031323
+       2000       4357.000     0.00498120     0.00108925     0.00023819
+       4000      17656.000     0.00579675     0.00110350     0.00021007
+       8000      67875.000     0.00639953     0.00106055     0.00017576
+      16000     272004.000     0.00736478     0.00106252     0.00015329
+      32000    1087557.000     0.00845634     0.00106207     0.00013339
+
+k=1000.
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+CotaSobrestimada: n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00107.
+
+sumaSubMax2
+          n           t(n)    t(n)/n^0.80    t(n)/n^1.00    t(n)/n^1.20
+(*)     500          1.334     0.00924655     0.00266800     0.00076982
+(*)    1000          3.131     0.01246473     0.00313100     0.00078647
+(*)    2000          4.854     0.01109879     0.00242700     0.00053072
+(*)    4000         11.441     0.01502505     0.00286025     0.00054449
+(*)    8000         21.530     0.01623948     0.00269125     0.00044600
+(*)   16000         39.278     0.01701584     0.00245488     0.00035416
+(*)   32000         71.510     0.01779290     0.00223469     0.00028066
+
+k=1000.
+Cota Subestimada: n^0.8
+Cota Ajustada: n^1
+CotaSobrestimada: n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^0.8 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.20
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0027
+
+sumaSubMax3
+          n           t(n)    t(n)/n^0.80    t(n)/n^1.05    t(n)/n^1.20
+(*)     500         31.507     0.21838913     0.04618370     0.01818205
+(*)    1000         63.983     0.25472089     0.04529651     0.01607180
+(*)    2000        133.289     0.30476864     0.04557356     0.01457331
+(*)    4000        273.219     0.35880861     0.04511782     0.01300286
+       8000        580.000     0.43747774     0.04625766     0.01201489
+      16000       1165.000     0.50469603     0.04487455     0.01050465
+      32000       2384.000     0.59317961     0.04435055     0.00935677
+
+k=1000.
+Cota Subestimada: n^0.8
+Cota Ajustada: n^1.05
+CotaSobrestimada: n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^0.8 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.20
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.045
+
+Notese que hemos elegido las mejores tablas de una secuencia de varias para evitar las anomalias.
+
+
+CONCLUSION:
+
+El segundo algoritmo es mucho más eficiente tal y como se puede observar en las tablas.
+Utilizando los mismos datos, el segundo algoritmo presenta tiempos de ejecución mucho 
+menores a los otros dos. El tercer algoritmo es mejor que el primero, pero peor que el 
+segundo. Como los algoritmos realizan la misma tarea, una implementación
+utilizando el segundo algoritmo sería más óptima. 
+
+La complejidad teórica del primer algoritmo es O(n^2), por lo que queda comprobada su complejidad.
+La complejidad teórica del segundo algoritmo es O(n), quedando así comprobada su complejidad.
+Por último, la complejidad teórica del tercer algoritmo es O(n*log n). En este caso, durante las 
+pruebas hemos obtenido una complejidad computacional de O(n^1.05). Este resultado es muy cercano al
+resultado teórico, por lo que podemos admitir estos resultados.
+
+
+
+
+
