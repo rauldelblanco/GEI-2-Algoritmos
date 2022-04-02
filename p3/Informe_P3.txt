@@ -1,0 +1,330 @@
+Nombres:Brais González Piñeiro(brais.gonzalezp), Armando Martínez Noya(a.mnoya), Raul Fernández del Blanco(r.delblanco).
+
+El ordenador que se usó para la medición de tiempos es un portátil con:
+CPU: Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
+Memoria RAM: 16GB DDR4 
+Disco Duro: 512GB SSD + 1TB (SATA) 7200rpm
+Sistema Operativo: Ubuntu 20.04.3 LTS (64-bit)
+
+En este trabajo buscamos verificar empíricamente la complejidad computacional de dos algoritmos de ordenación diferentes (Ordenación por Inserción y Ordenación Rápida).
+Para cada uno de los algoritmos utilizamos vectores generados de manera aleatoria, ascendente y descendente. El tamaño de estos sigue una progresión geometrica
+de razón 2, empezando con un n=500 hasta n=32000.
+
+Para calcular la complejidad de cada algoritmo, medimos los tiempos de ejecución de los mismos con los diferentes tamaños de vectores, estos tiempos están medidos en microsegundos (µs).
+
+Para las ejecuciones cuyo tiempo no supere el umbral de confianza de 500 microsegundos (µs), 
+se repetirá el algoritmo k veces y se hallará la media del tiempo de ejecución.
+Los tiempos para los que se ha calculado automáticamente esta media estarán marcados con (*).
+
+
+Ordenación Inserción con inicializacion aleatoria:
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500        141.481     0.00196134     0.00056592     0.00016329
+       1000        584.000     0.00232495     0.00058400     0.00014669
+       2000       2241.000     0.00256205     0.00056025     0.00012251
+       4000       9035.000     0.00296634     0.00056469     0.00010750
+       8000      35359.000     0.00333379     0.00055248     0.00009156
+      16000     139192.000     0.00376876     0.00054372     0.00007844
+      32000     549129.000     0.00426977     0.00053626     0.00006735
+
+
+k=1000.
+Cota Subestimada -> f(n): n^1.8
+Cota Ajustada -> g(n): n^2
+CotaSobrestimada -> h(n): n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00056
+
+Ordenación Inserción con inicializacion ascendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500          1.423     0.00986345     0.00284600     0.00082118
+(*)    1000          2.902     0.01155307     0.00290200     0.00072895
+(*)    2000          6.209     0.01419703     0.00310450     0.00067887
+(*)    4000         12.009     0.01577098     0.00300225     0.00057152
+(*)    8000         23.471     0.01770352     0.00293387     0.00048621
+(*)   16000         48.141     0.02085543     0.00300881     0.00043408
+(*)   32000         95.690     0.02380929     0.00299031     0.00037557
+
+
+k=1000.
+Cota Subestimada -> f(n): n^0.8
+Cota Ajustada -> g(n): n^1
+CotaSobrestimada -> h(n): n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^0.8 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0029
+
+
+Ordenación Inserción con inicializacion descendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500        271.970     0.00377029     0.00108788     0.00031390
+       1000       1199.000     0.00477331     0.00119900     0.00030118
+       2000       4328.000     0.00494804     0.00108200     0.00023660
+       4000      17718.000     0.00581710     0.00110738     0.00021081
+       8000      69382.000     0.00654162     0.00108409     0.00017966
+      16000     276720.000     0.00749247     0.00108094     0.00015595
+      32000    1119545.000     0.00870506     0.00109331     0.00013731
+
+
+k=1000.
+Cota Subestimada -> f(n): n^1.8
+Cota Ajustada -> g(n): n^2
+CotaSobrestimada -> h(n): n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0010
+
+
+Ordenación Rápida con inicializacion aleatoria
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500         31.793     0.01904780     0.01158583     0.00549605
+(*)    1000         68.151     0.01968500     0.01132753     0.00494465
+(*)    2000        149.181     0.02098560     0.01142454     0.00458897
+(*)    4000        316.221     0.02184591     0.01125137     0.00415870
+       8000        668.000     0.02282293     0.01112049     0.00378228
+      16000       1429.000     0.02429034     0.01119705     0.00350437
+      32000       3057.000     0.02598577     0.01133244     0.00326366
+
+
+Umbral=1.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^0.98)*log(n)
+CotaSobrestimada -> h(n): (n^1.1)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.1)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.011
+
+
+Ordenación Rápida con inicializacion ascendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500         10.494     0.01170446     0.00433028     0.00181410
+(*)    1000         22.231     0.01281215     0.00424250     0.00161295
+(*)    2000         47.043     0.01415161     0.00419412     0.00144709
+(*)    4000        100.009     0.01583523     0.00420044     0.00131524
+(*)    8000        211.874     0.01778203     0.00422170     0.00119965
+(*)   16000        450.245     0.02014940     0.00428157     0.00110414
+      32000        980.000     0.02350613     0.00447051     0.00104625
+
+
+Umbral=1.
+k=1000.
+Cota Subestimada -> f(n): (n^0.8)*log(n)
+Cota Ajustada -> g(n): (n^0.96)*log(n)
+CotaSobrestimada -> h(n): (n^1.1)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.8)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.1)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0042
+
+
+Ordenación Rápida con inicializacion descendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500         10.332     0.01152377     0.00426343     0.00178609
+(*)    1000         22.219     0.01280523     0.00424021     0.00161208
+(*)    2000         46.865     0.01409806     0.00417825     0.00144162
+(*)    4000        100.407     0.01589825     0.00421716     0.00132048
+(*)    8000        212.553     0.01783902     0.00423523     0.00120349
+(*)   16000        452.994     0.02027242     0.00430771     0.00111089
+      32000        972.000     0.02331424     0.00443402     0.00103771
+
+
+Umbral=1.
+k=1000.
+Cota Subestimada -> f(n): (n^0.8)*log(n)
+Cota Ajustada -> g(n): (n^0.96)*log(n)
+CotaSobrestimada -> h(n): (n^1.1)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.8)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.1)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0042
+
+Ordenación Rápida con inicializacion aleatoria
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500         31.121     0.01864519     0.01134094     0.00537988
+(*)    1000         62.743     0.01812293     0.01042865     0.00455227
+(*)    2000        136.605     0.01921651     0.01046145     0.00420212
+(*)    4000        297.484     0.02055148     0.01058469     0.00391229
+       8000        642.000     0.02193461     0.01068766     0.00363506
+      16000       1371.000     0.02330445     0.01074259     0.00336213
+      32000       2920.000     0.02482121     0.01082457     0.00311740
+
+
+Umbral=10.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^0.98)*log(n)
+CotaSobrestimada -> h(n): (n^1.1)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.1)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0105
+
+Ordenación Rápida con inicializacion ascendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500          7.254     0.00434601     0.00248418     0.00091907
+(*)    1000         16.189     0.00467609     0.00251121     0.00083154
+(*)    2000         35.816     0.00503831     0.00254210     0.00075340
+(*)    4000         78.389     0.00541545     0.00256714     0.00068096
+(*)    8000        169.357     0.00578626     0.00257703     0.00061182
+(*)   16000        365.233     0.00620828     0.00259777     0.00055200
+      32000        781.000     0.00663882     0.00260992     0.00049637
+
+
+Umbral=10.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^0.99)*log(n)
+CotaSobrestimada -> h(n): (n^1.15)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.15)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0025
+
+Ordenación Rápida con inicializacion descendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500          7.501     0.00449399     0.00256877     0.00095036
+(*)    1000         16.487     0.00476217     0.00255744     0.00084685
+(*)    2000         36.038     0.00506954     0.00255785     0.00075807
+(*)    4000         78.502     0.00542326     0.00257084     0.00068194
+(*)    8000        170.258     0.00581704     0.00259074     0.00061508
+(*)   16000        366.048     0.00622213     0.00260357     0.00055323
+      32000        783.000     0.00665583     0.00261661     0.00049764
+
+
+Umbral=10.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^0.99)*log(n)
+CotaSobrestimada -> h(n): (n^1.15)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.15)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0025
+
+Ordenación Rápida con inicializacion aleatoria
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500         37.382     0.02239628     0.01280172     0.00646222
+(*)    1000         73.893     0.02134354     0.01146216     0.00536125
+(*)    2000        162.361     0.02283966     0.01152383     0.00499440
+(*)    4000        340.014     0.02348963     0.01113501     0.00447161
+       8000        749.000     0.02559038     0.01139721     0.00424090
+      16000       1579.000     0.02684006     0.01123085     0.00387221
+      32000       3292.000     0.02798337     0.01100111     0.00351455
+
+
+Umbral=100.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^0.99)*log(n)
+CotaSobrestimada -> h(n): (n^1.1)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.1)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.011
+
+Ordenación Rápida con inicializacion ascendente.
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500          4.279     0.00137708     0.00094846     0.00054214
+(*)    1000         10.028     0.00145170     0.00095913     0.00051508
+(*)    2000         23.747     0.00156212     0.00099004     0.00049953
+(*)    4000         53.909     0.00162493     0.00098790     0.00046830
+(*)    8000        120.426     0.00167497     0.00097683     0.00043505
+(*)   16000        267.090     0.00172444     0.00096472     0.00040367
+      32000        580.000     0.00174724     0.00093766     0.00036862
+
+
+Umbral=100.
+k=1000.
+Cota Subestimada -> f(n): (n^1)*log(n)
+Cota Ajustada -> g(n): (n^1.06)*log(n)
+CotaSobrestimada -> h(n): (n^1.15)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^1)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.15)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00096
+
+Ordenación Rápida con inicializacion descendente
+
+          n           t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)
+(*)     500          4.229     0.00253368     0.00093738     0.00053581
+(*)    1000         10.040     0.00289999     0.00096028     0.00051570
+(*)    2000         23.434     0.00329651     0.00097699     0.00049294
+(*)    4000         53.401     0.00368917     0.00097859     0.00046389
+(*)    8000        119.946     0.00409808     0.00097294     0.00043332
+(*)   16000        267.289     0.00454342     0.00096544     0.00040397
+      32000        582.000     0.00494724     0.00094089     0.00036989
+
+
+Umbral=100.
+k=1000.
+Cota Subestimada -> f(n): (n^0.9)*log(n)
+Cota Ajustada -> g(n): (n^1.06)*log(n)
+CotaSobrestimada -> h(n): (n^1.15)*log(n)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/(n^0.9)*log(n) tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/(n^1.15)*log(n)
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.00095
+
+
+**Notese que hemos elegido las mejores tablas de una secuencia de varias para evitar las anomalias.**
+
+CONCLUSION:
+
+El algoritmo de inserción, en el mejor caso (ascendente), tiene una complejidad lineal O(n). Y en caso medio y peor caso una coplejidad cuadrática O(n^2).
+
+En cuanto a la ordenación rápida siempre trabajaremos con el caso más eficaz, cuando está el pivote en el centro de la lista, ya que nos divide a esta en dos
+sublistas de igual tamaño, en este caso, sabemos que el orden de complejidad teórico del algoritmo es O(n•log n) en nuestro caso práctico comprobamos que esto
+se cumple obteniendo en todas las inicializaciones del vector una cota ajustada muy próxima a n*log n, dando mejores resultados con potencias cercanas a n^1 en n*log n.
+
+Así, tanto en la ordenación por inserción como en la ordenación rápida, hemos demostrado empíricamente su complejidad gracias a los resultados obtenidos en las tablas.
+Finalmente, basandonos en los resultados obtenidos, podemos comprobar que el algoritmo de ordenación rápida es mucho más eficaz y rápido en la gran mayoría de casos 
+comparado con el algoritmo de inserción.
+
+
+
+CUESTIÓN: ¿con qué umbral se obtienen los mejores tiempos? ¿por qué?
+Para un vector aleatorio hemos comprobado que el mejor umbral es 10 ya que para vectores de poco tamaño el metodo de insercion es eficiente.
+Para los vectores ascendetes y descendentes el mejor umbral es 100 ya que el vector que le llega al algoritmo de insercion es un vector ya ordenado.
+
+
