@@ -1,0 +1,56 @@
+Nombres:Brais González Piñeiro(brais.gonzalezp), Armando Martínez Noya(a.mnoya), Raul Fernández del Blanco(r.delblanco).
+
+El ordenador que se usó para la medición de tiempos es un portátil con:
+CPU: Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
+Memoria RAM: 16GB DDR4 
+Disco Duro: 512GB SSD + 1TB (SATA) 7200rpm
+Sistema Operativo: Ubuntu 20.04.3 LTS (64-bit)
+
+En este trabajo buscamos verificar la complejidad computacional a la hora de calcular el árbol de recubrimiento
+mínimo, usando el algoritmo de prim dado en teoría. 
+Para ello, este algoritmo devuelve las aristas que forman este árbol dentro de una cola circular implementada 
+en base a vectores.
+
+A la hora de estudiar esta complejidad, generamos aleatoriamente 7 grafos completos no dirigidos con 10,
+20, 40, 80, 160, 320 y 640 nodos respectivamente. Para esto generamos matrices de adyacencia llenandolas 
+con valores aleatorios que representan los pesos de las aristas.
+
+Para las ejecuciones cuyo tiempo no supere el umbral de confianza de 500 microsegundos (µs), 
+se repetirá el algoritmo k veces y se hallará la media del tiempo de ejecución.
+Los tiempos para los que se ha calculado automáticamente esta media estarán marcados con *.
+
+
+****************************************PRIM**************************************************
+
+    n             t(n)      t(n)/f(n)      t(n)/g(n)      t(n)/h(n)     t(n)/g(n)**
+   10*          0.431         0.0136        0.00431      0.0006831        0.00358
+   20*          1.629         0.0182        0.00407      0.0003707        0.00320
+   40*          6.653         0.0263        0.00416      0.0002174        0.00310
+   80*         27.970         0.0391        0.00437      0.0001312        0.00308
+  160*        128.476         0.0635        0.00502      0.0000866        0.00334
+  320         538.000         0.0940        0.00525      0.0000520        0.00331
+  640        2259.000         0.1395        0.00552      0.0000314        0.00329
+
+
+k=1000.
+Cota Subestimada -> f(n): (n^1.5)
+Cota ajustada teórica -> g(n): (n^2)
+Cota sobrestimada -> h(n): (n^2.8) 
+Cota ajustada -> g(n)**: (n^2.08)
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.5 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.8
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.0033
+
+
+**Notese que hemos elegido las mejores tablas de una secuencia de varias para evitar las anomalias.**
+
+CONCLUSION:
+
+Conclusión:
+En este trabajo hemos sido capaces de verificar empíricamente la complejidad del algoritmo de prim
+y nos dimos cuenta que la cota ajustada teórica (n^2) no es lo suficientemente constante a medida 
+que crece n, de hecho esta es ligeramente subestimada. Por este motivo en nuestro caso practico 
+conseguimos que la cota que mas se ajusta es algo aproximado a (n^2.08).
