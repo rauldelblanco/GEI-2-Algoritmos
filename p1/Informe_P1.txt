@@ -1,0 +1,68 @@
+El ordenador que se usó para la medición de tiempos es un portátil con:
+CPU: Intel® Core™ i7-7700HQ CPU @ 2.80GHz × 8 
+Memoria RAM: 16GB DDR4 
+Disco Duro: 512GB SSD + 1TB (SATA) 7200rpm
+Sistema Operativo: Ubuntu 20.04.3 LTS (64-bit)
+
+Nombres:Brais González Piñeiro(brais.gonzalezp), Armando Martínez Noya(a.mnoya), Raul Fernández del Blanco(r.delblanco).
+En este trabajo buscamos verificar empiricamente la complejidad computacional de dos algoritmos de la suma de la subsecuencia máxina.
+Para cada uno de los algoritmos utilizamos vectores generados aleatoriamente , el tamaño de estos sigue una progresion geometrica
+de razón 2 hasta 32000. En algunos casos detenemos la ejecucion antes dado que el tiempo que tarda en ordenar esos vectores es superior a 1seg.
+
+Además también mide los tiempos de ejecución de los distintas algoritmos, estos tiempos están medidos en microsegundos(µs).
+
+Para las ejecuciones cuyo tiempo no supere el umbral de confianza de 500 microsegundos, 
+se repetirá el algoritmo k veces y se hallará la media del tiempo de ejecución.
+Los tiempos para los que se ha calculado automáticamente esta media estarán marcados con (*).
+
+SumaSubMax 1
+		n		t(n)		t(n)/n^1.8	t(n)/n^2	t(n)/n^2.2
+(*)		500		268.7000	0.003725	0.001075	0.000310
+(*)		1000		1076.0000	0.004284	0.001076	0.000270
+(*)		2000		4176.0000	0.004774	0.001044	0.000228
+(*)		4000		17895.0000	0.005875	0.001118	0.000213
+(*)		8000		68098.0000	0.006421	0.001064	0.000176
+(*)		16000		271020.0000	0.007338	0.001059	0.000153
+(*)		32000		1083863.0000	0.008428	0.001058	0.000133
+
+k=1000.
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+CotaSobrestimada: n^2.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^1.8 tiende a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^2.2
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.001070 µs.
+
+SumaSubMax 2
+		n		t(n)		t(n)/n^0.8	t(n)/n^1	t(n)/n^1.2
+(*)		500		1.5710		0.010889	0.003142	0.000907
+(*)		1000		2.8000		0.011147	0.002800	0.000703
+(*)		2000		5.0410		0.011526	0.002521	0.000551
+(*)		4000		11.3540	0.014911	0.002838	0.000540
+(*)		8000		20.9920	0.015834	0.002624	0.000435
+(*)		16000		41.6510	0.018044	0.002603	0.000376
+(*)		32000		77.8410	0.019368	0.002433	0.000306
+
+k=1000.
+Cota Subestimada: n^0.8
+Cota Ajustada: n^1
+CotaSobrestimada: n^1.2
+
+Empleando una cota ligeramente subestimada, la secuencia
+de t(n)/n^0.8 tienda a infinito cuando n tiende a infinito.
+Y con una cota ligeramente sobreestimada, la relación de t(n)/n^1.20
+tienda a cero cuando n tiende a infinito.
+La cota ajustada tiende a un valor aproximado a 0.002708
+
+Notese que hemos elegido las mejores tablas de una secuencia de varias para evitar las anomalias.
+
+CONCLUSION:
+
+El primer algoritmo es mucho más eficiente tal y como se puede observar en las tablas.
+Utilizando los mismos datos, el primer algoritmo ofrece unos tiempos de ejecución casi tres veces 
+más pequeños que el segundo. Como ambos algoritmos realizan la misma tarea, una implementación
+utilizando el primer algoritmo sería más óptima.
+
